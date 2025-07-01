@@ -10,9 +10,7 @@ export default function Dashboard() {
         <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-                {/* header */}
-                <DashboardHeader/>
-                {/* main */}
+                <DashboardHeader/>   
                 <DashboardMain />
             </SidebarInset>
         </SidebarProvider>

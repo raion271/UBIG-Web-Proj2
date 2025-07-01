@@ -170,7 +170,7 @@ export default function DashboardMain() {
                         <CardContent>
                             <div className="m-5">
                                 {recentSales.map((recentSale) => (
-                                    <>
+                                    <div key={recentSale.email}>
                                         <div className="mt-5 w-full flex justify-between text-center">
                                             <Avatar className="w-10 h-10 m-2">
                                                 <AvatarImage src="https://github.com/shadcn.png" />
@@ -183,7 +183,7 @@ export default function DashboardMain() {
                                             <h1 className="p-5 font-bold">+{formatCurrency(recentSale["amount"]) }</h1>
                                         </div>
                                         <Separator />
-                                    </>
+                                    </div>
                                 ))}
                             </div>
                         </CardContent>
