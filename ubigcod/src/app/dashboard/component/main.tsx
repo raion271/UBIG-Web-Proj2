@@ -12,6 +12,7 @@ import {
     Bar, 
     BarChart,
     CartesianGrid,
+    LineChart,
     XAxis,
     YAxis
 } from "recharts"
@@ -21,6 +22,12 @@ import {
     ChartTooltip,
     ChartTooltipContent
 } from "@/components/ui/chart"
+import { 
+    Avatar, 
+    AvatarFallback, 
+    AvatarImage 
+} from "@/components/ui/avatar"
+import { Separator } from "@/components/ui/separator"
 
 export default function DashboardMain() {
     const chartData = [
@@ -41,7 +48,24 @@ export default function DashboardMain() {
             color: "var(--chart-3)",
         },
     } satisfies ChartConfig
+    const summaryStats = {
+        totalRevenue: 45431.85, 
+        subscriptions: 2350, 
+        sales: 12234, 
+        activeUsers: 573
+    }
+    const recentSales = [
+        { name: "Olivia Martin", email: "olivia@insidemail.com", amount: 1299.00 },
+        { name: "Jackson Lee", email: "jackson@email.com", amount: 539.00 }
 
+    ]
+    
+    const formatCurrency = (num) => {
+        return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    }
+    const formatNumber = (num) => {
+        return num.toLocaleString('en-US');
+    }
     return (
         <>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0 m-5">
@@ -55,10 +79,10 @@ export default function DashboardMain() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <div className="font-bold text-2xl mb-[-10px]">$45,431.85</div>
+                            <div className="font-bold text-2xl mb-[-10px]">{ formatCurrency(summaryStats["totalRevenue"]) }</div>
                         </CardContent>
                         <CardFooter>
-                            <div className="text-s mt-[-5px]">Card Footer</div>
+                            <div className="text-s mt-[-5px]">+23.1% dari bulan lalu</div>
                         </CardFooter>
                     </Card>
                     {/* subscridivtion */}
@@ -70,10 +94,10 @@ export default function DashboardMain() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <div className="font-bold text-2xl mb-[-10px]">+2,350</div>
+                            <div className="font-bold text-2xl mb-[-10px]">+{ formatNumber(summaryStats["subscriptions"]) }</div>
                         </CardContent>
                         <CardFooter>
-                            <div className="text-s mt-[-5px]">Card Footer</div>
+                            <div className="text-s mt-[-5px]">+180.7% dari bulan lalu</div>
                         </CardFooter>
                     </Card>
                     {/* salary */}
@@ -85,10 +109,10 @@ export default function DashboardMain() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <div className="font-bold text-2xl mb-[-10px]">+12,234</div>
+                            <div className="font-bold text-2xl mb-[-10px]">+{ formatNumber(summaryStats["sales"]) }</div>
                         </CardContent>
                         <CardFooter>
-                            <div className="text-s mt-[-5px]">Card Footer</div>
+                            <div className="text-s mt-[-5px]">+15% dari bulan lalu</div>
                         </CardFooter>
                     </Card>
                     {/* active user */}
@@ -100,10 +124,10 @@ export default function DashboardMain() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <div className="font-bold text-2xl mb-[-10px]">+573</div>
+                            <div className="font-bold text-2xl mb-[-10px]">+{ formatNumber(summaryStats["activeUsers"]) }</div>
                         </CardContent>
                         <CardFooter>
-                            <div className="text-s mt-[-5px]">Card Footer</div>
+                            <div className="text-s mt-[-5px]">+201 aktif dari jam lalu</div>
                         </CardFooter>
                     </Card>
                 </div>
@@ -130,14 +154,12 @@ export default function DashboardMain() {
                                         axisLine={true}
                                     />
                                     <ChartTooltip content={<ChartTooltipContent />} />
+                                    <LineChart accessibilityLayer />
                                     <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
                                     <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
                                 </BarChart>
                             </ChartContainer>
                         </CardContent>
-                        <CardFooter>
-                            <div>Card Footer</div>
-                        </CardFooter>
                     </Card>
                     <Card>
                         <CardHeader>
@@ -145,7 +167,24 @@ export default function DashboardMain() {
                             <CardDescription>Card Description</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div>Card Content</div>
+                            <div className="m-5">
+                                {recentSales.map((recentSale) => (
+                                    <>
+                                        <div className="mt-5 w-full flex justify-between text-center">
+                                            <Avatar className="w-10 h-10 m-2">
+                                                <AvatarImage src="https://github.com/shadcn.png" />
+                                                <AvatarFallback>CN</AvatarFallback>
+                                            </Avatar>
+                                            <div className="flex flex-col justify-center">
+                                                <h1 className="text-m font-bold text-xl">{ recentSale["name"] }</h1>
+                                                <p className="text-xs">{ recentSale["email"] }</p>
+                                            </div>
+                                            <h1 className="p-5 font-bold">+{formatCurrency(recentSale["amount"]) }</h1>
+                                        </div>
+                                        <Separator />
+                                    </>
+                                ))}
+                            </div>
                         </CardContent>
                     </Card>
                 </div>
