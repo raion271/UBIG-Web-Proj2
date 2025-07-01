@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card"
 import { ChartColumn, CircleDollarSign, CreditCard, Users } from "lucide-react"
 
-export default function MainDashboard() {
+export default function DashboardMain() {
     return (
         <>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0 m-5">
@@ -22,25 +22,25 @@ export default function MainDashboard() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p>Card Content</p>
+                            <div>$45,431.85</div>
                         </CardContent>
                         <CardFooter>
-                            <p>Card Footer</p>
+                            <div>Card Footer</div>
                         </CardFooter>
                     </Card>
-                    {/* subscription */}
+                    {/* subscridivtion */}
                     <Card>
                         <CardHeader>
                             <CardTitle className="flex justify-between">
-                                <div>Subscription</div>
+                                <div>Subscridivtion</div>
                                 <Users />
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p>Card Content</p>
+                            <div>+2,350</div>
                         </CardContent>
                         <CardFooter>
-                            <p>Card Footer</p>
+                            <div>Card Footer</div>
                         </CardFooter>
                     </Card>
                     {/* salary */}
@@ -52,10 +52,10 @@ export default function MainDashboard() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p>Card Content</p>
+                            <div>+12,234</div>
                         </CardContent>
                         <CardFooter>
-                            <p>Card Footer</p>
+                            <div>Card Footer</div>
                         </CardFooter>
                     </Card>
                     {/* active user */}
@@ -67,6 +67,32 @@ export default function MainDashboard() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
+                            <div>Card Content</div>
+                        </CardContent>
+                        <CardFooter>
+                            <div>Card Footer</div>
+                        </CardFooter>
+                    </Card>
+                </div>
+                <div className="grid auto-rows-min gap-4 md:grid-cols-2 flex-wrap">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Overview</CardTitle>
+                            <CardDescription>Card Description</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <p>Card Content</p>
+                        </CardContent>
+                        <CardFooter>
+                            <p>Card Footer</p>
+                        </CardFooter>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Card Title</CardTitle>
+                            <CardDescription>Card Description</CardDescription>
+                        </CardHeader>
+                        <CardContent>
                             <p>Card Content</p>
                         </CardContent>
                         <CardFooter>
@@ -74,7 +100,6 @@ export default function MainDashboard() {
                         </CardFooter>
                     </Card>
                 </div>
-                <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
             </div>
         </>
     )
