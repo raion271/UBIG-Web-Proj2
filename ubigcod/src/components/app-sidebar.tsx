@@ -82,6 +82,7 @@ prim: [
       name: "Chat",
       url: "#",
       icon: MessageSquareMore,
+      isActive: false,
     },
     {
       name: "Users",
