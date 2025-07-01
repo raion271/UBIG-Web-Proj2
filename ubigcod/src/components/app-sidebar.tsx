@@ -16,10 +16,10 @@ import {
   AppWindow,
   AppWindowIcon,
   Projector,
-  MessageCircle,
   Users,
   Group,
-  MessageSquareMore
+  MessageCircle,
+  MessageSquareMore,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -79,14 +79,14 @@ prim: [
       isActive: false,
     },
     {
-      name: "Chat",
-      url: "#",
-      icon: MessageSquareMore,
+      name: "Chats",
+      url: "/Chats",
+      icon: MessageCircle,
       isActive: false,
     },
     {
       name: "Users",
-      url: "#",
+      url: "/Users",
       icon: Users,
       isActive: false,
     },
