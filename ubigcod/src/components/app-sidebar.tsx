@@ -62,7 +62,7 @@ const data = {
 prim: [
     {
       name: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: Home,
       isActive: true,
     },
@@ -74,7 +74,7 @@ prim: [
     },
     {
       name: "Apps",
-      url: "#",
+      url: "/Apps",
       icon: AppWindowIcon,
       isActive: false,
     },
