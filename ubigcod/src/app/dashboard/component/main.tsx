@@ -60,10 +60,10 @@ export default function DashboardMain() {
 
     ]
     
-    const formatCurrency = (num) => {
+    const formatCurrency = (num: number) => {
         return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     }
-    const formatNumber = (num) => {
+    const formatNumber = (num: number) => {
         return num.toLocaleString('en-US');
     }
     return (
@@ -151,6 +151,7 @@ export default function DashboardMain() {
                                     />
                                     <YAxis
                                         tickLine={true}
+                                        tickMargin={10}
                                         axisLine={true}
                                     />
                                     <ChartTooltip content={<ChartTooltipContent />} />
