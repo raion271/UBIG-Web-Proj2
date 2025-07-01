@@ -26,10 +26,10 @@ import {
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
-export function NavProjects({
-  projects,
+export function NavPrim({
+  prim,
 }: {
-  projects: {
+  prim: {
     name: string;
     url: string;
     icon?: LucideIcon;
@@ -40,9 +40,8 @@ export function NavProjects({
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
+        {prim.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild className={cn(item.isActive && "bg-sidebar-accent")}>
               <a href={item.url} className={cn(item.isActive && "bg-sidebar-accent")}>
@@ -58,16 +57,16 @@ export function NavProjects({
               >
                 <DropdownMenuItem>
                   <Folder className="text-muted-foreground" />
-                  <span>View Project</span>
+                  <span>View Prim</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Forward className="text-muted-foreground" />
-                  <span>Share Project</span>
+                  <span>Share Prim</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Trash2 className="text-muted-foreground" />
-                  <span>Delete Project</span>
+                  <span>Delete Prim</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

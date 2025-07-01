@@ -13,10 +13,17 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  AppWindow,
+  AppWindowIcon,
+  Projector,
+  MessageCircle,
+  Users,
+  Group,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
+import { NavPrim } from "@/components/nav-prim";
 import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
@@ -51,11 +58,30 @@ const data = {
       plan: "Free",
     },
   ],
-projects: [
+prim: [
     {
-      name: "Home",
+      name: "Dashboard",
       url: "#",
       icon: Home,
+      isActive: true,
+    },
+    {
+      name: "Tasks",
+      url: "#",
+      icon: Projector,
+      isActive: false,
+    },
+    {
+      name: "Apps",
+      url: "#",
+      icon: AppWindowIcon,
+      isActive: false,
+    },
+    {
+      name: "Users",
+      url: "#",
+      icon: Users,
+      isActive: false,
     },
     // {
     //   name: "Sales & Marketing",
@@ -70,26 +96,6 @@ projects: [
   ],
   
   navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
     {
       title: "Models",
       url: "#",
@@ -161,16 +167,19 @@ projects: [
       name: "Design Engineering",
       url: "#",
       icon: Frame,
+      isActive: false,
     },
     {
       name: "Sales & Marketing",
       url: "#",
       icon: PieChart,
+      isActive: false,
     },
     {
       name: "Travel",
       url: "#",
       icon: Map,
+      isActive: false,
     },
   ],
 };
@@ -182,7 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavProjects projects={data.projects} />
+        <NavPrim prim={data.prim} />
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects2} />
       </SidebarContent>
