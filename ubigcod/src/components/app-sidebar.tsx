@@ -68,7 +68,7 @@ prim: [
     },
     {
       name: "Tasks",
-      url: "#",
+      url: "/Tasks",
       icon: Projector,
       isActive: false,
     },
