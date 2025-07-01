@@ -19,6 +19,7 @@ import {
   MessageCircle,
   Users,
   Group,
+  MessageSquareMore
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -78,16 +79,16 @@ prim: [
       isActive: false,
     },
     {
+      name: "Chat",
+      url: "#",
+      icon: MessageSquareMore,
+    },
+    {
       name: "Users",
       url: "#",
       icon: Users,
       isActive: false,
     },
-    // {
-    //   name: "Sales & Marketing",
-    //   url: "#",
-    //   icon: PieChart,
-    // },
     // {
     //   name: "Travel",
     //   url: "#",
