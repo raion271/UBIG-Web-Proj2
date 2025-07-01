@@ -13,7 +13,7 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar"
-import MainDashboard from "./component/main"
+import DashboardMain from "./component/main"
 export default function Dashboard() {
     return (
         <SidebarProvider>
@@ -42,8 +42,8 @@ export default function Dashboard() {
                     </div>
                 </header>
 
-                <MainDashboard/>
-                
+                <DashboardMain />
+
             </SidebarInset>
         </SidebarProvider>
     )
