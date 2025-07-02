@@ -18,7 +18,6 @@ import { Input } from "@/components/ui/input"
 import { Avatar } from "@/components/ui/avatar"
 
 export default function Chats() {
-  // Data pesan dummy untuk contoh
   const conversations = [
     {
       id: 1,

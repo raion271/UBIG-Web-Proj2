@@ -14,7 +14,7 @@ import {
     SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { AppWindowIcon, Bell, ChevronDown, List, LogOut, MessageCircle, Moon, MoreHorizontal, Sun, Users } from "lucide-react"
+import { AppWindowIcon, Bell, ChevronDown, List, LogOut, MessageCircle, Moon, MoreHorizontal, Router, Sun, Users } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import Link from "next/link"
@@ -23,6 +23,7 @@ import { useRouter } from "next/navigation"
 export default function DashboardHeader() {
     const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
+    const router = useRouter
 
     useEffect(() => {
         setMounted(true)
@@ -67,7 +68,7 @@ export default function DashboardHeader() {
                             </Button>
                         </Link>
                     </div>
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" asChild>
                         <DropdownMenu>
                             <DropdownMenuTrigger>
                                 <MoreHorizontal className="h-[1.2rem] w-[1.2rem]" />
