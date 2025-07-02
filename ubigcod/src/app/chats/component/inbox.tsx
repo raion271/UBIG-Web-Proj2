@@ -1,7 +1,22 @@
 "use client"
 
 import * as React from "react"
-import { ArchiveX, Command, File, Inbox, Send, Trash2 } from "lucide-react"
+import {
+    AudioWaveform,
+    BookOpen,
+    Bot,
+    Command,
+    Frame,
+    GalleryVerticalEnd,
+    Home,
+    Map,
+    PieChart,
+    Settings2,
+    AppWindowIcon,
+    Projector,
+    Users,
+    MessageCircle,
+} from "lucide-react";
 
 import { NavUser } from "@/components/nav-user"
 import { Label } from "@/components/ui/label"
@@ -16,9 +31,14 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarRail,
     useSidebar,
 } from "@/components/ui/sidebar"
 import { Switch } from "@/components/ui/switch"
+import { TeamSwitcher } from "@/components/team-switcher"
+import { NavPrim } from "@/components/nav-prim"
+import { NavMain } from "@/components/nav-main"
+import { NavProjects } from "@/components/nav-projects"
 
 // This is sample data
 const data = {
@@ -27,35 +47,145 @@ const data = {
         email: "m@example.com",
         avatar: "/avatars/shadcn.jpg",
     },
-    navMain: [
+    teams: [
         {
-            title: "Inbox",
-            url: "#",
-            icon: Inbox,
+            name: "Acme Inc",
+            logo: GalleryVerticalEnd,
+            plan: "Enterprise",
+        },
+        {
+            name: "Acme Corp.",
+            logo: AudioWaveform,
+            plan: "Startup",
+        },
+        {
+            name: "Evil Corp.",
+            logo: Command,
+            plan: "Free",
+        },
+    ],
+    prim: [
+        {
+            name: "Dashboard",
+            url: "/dashboard",
+            icon: Home,
             isActive: true,
         },
         {
-            title: "Drafts",
-            url: "#",
-            icon: File,
+            name: "Tasks",
+            url: "/tasks",
+            icon: Projector,
             isActive: false,
         },
         {
-            title: "Sent",
-            url: "#",
-            icon: Send,
+            name: "Apps",
+            url: "/apps",
+            icon: AppWindowIcon,
             isActive: false,
         },
         {
-            title: "Junk",
-            url: "#",
-            icon: ArchiveX,
+            name: "Chats",
+            url: "/chats",
+            icon: MessageCircle,
             isActive: false,
         },
         {
-            title: "Trash",
+            name: "Users",
+            url: "/users",
+            icon: Users,
+            isActive: false,
+        },
+        // {
+        //   name: "Travel",
+        //   url: "#",
+        //   icon: Map,
+        // },
+    ],
+
+    navMain: [
+        {
+            title: "Models",
             url: "#",
-            icon: Trash2,
+            icon: Bot,
+            items: [
+                {
+                    title: "Genesis",
+                    url: "#",
+                },
+                {
+                    title: "Explorer",
+                    url: "#",
+                },
+                {
+                    title: "Quantum",
+                    url: "#",
+                },
+            ],
+        },
+        {
+            title: "Documentation",
+            url: "#",
+            icon: BookOpen,
+            items: [
+                {
+                    title: "Introduction",
+                    url: "#",
+                },
+                {
+                    title: "Get Started",
+                    url: "#",
+                },
+                {
+                    title: "Tutorials",
+                    url: "#",
+                },
+                {
+                    title: "Changelog",
+                    url: "#",
+                },
+            ],
+        },
+        {
+            title: "Settings",
+            url: "#",
+            icon: Settings2,
+            items: [
+                {
+                    title: "General",
+                    url: "#",
+                },
+                {
+                    title: "Team",
+                    url: "#",
+                },
+                {
+                    title: "Billing",
+                    url: "#",
+                },
+                {
+                    title: "Limits",
+                    url: "#",
+                },
+            ],
+        },
+    ],
+    projects2: [
+        {
+            name: "Design Engineering",
+            url: "#",
+            icon: Frame,
+            isActive: false,
+        },
+        {
+            name: "Sales & Marketing",
+            url: "#",
+            icon: PieChart,
+            isActive: false,
+        },
+        {
+            name: "Travel",
+            url: "#",
+            icon: Map,
             isActive: false,
         },
     ],
@@ -141,19 +271,32 @@ const data = {
                 "To celebrate our recent project success, I'd like to organize a team dinner.\nAre you available next Friday evening? Please let me know your preferences.",
         },
     ],
-}
+};
 
-export function InboxChat({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    // Note: I'm using state to show active item.
-    // IRL you should use the url/router.
+export function ChatDashboard({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const [activeItem, setActiveItem] = React.useState(data.navMain[0])
     const [mails, setMails] = React.useState(data.mails)
     const { setOpen } = useSidebar()
 
     return (
+        
         <Sidebar collapsible="icon" className="overflow-hidden *:data-[sidebar=sidebar]:flex-row" {...props}>
+            <Sidebar collapsible="icon" {...props}>
+                <SidebarHeader>
+                    <TeamSwitcher teams={data.teams} />
+                </SidebarHeader>
+                <SidebarContent>
+                    <NavPrim prim={data.prim} />
+                    <NavMain items={data.navMain} />
+                    <NavProjects projects={data.projects2} />
+                </SidebarContent>
+                <SidebarFooter>
+                    <NavUser user={data.user} />
+                </SidebarFooter>
+                <SidebarRail />
+            </Sidebar>
             {/* This is the second sidebar */}
-            {/* We disable collapsible and let it fill remaining space */}
+            {/* inbox */}
             <Sidebar collapsible="none" className="hidden flex-1 md:flex">
                 <SidebarHeader className="gap-3.5 border-b p-4">
                     <div className="flex w-full items-center justify-between">
